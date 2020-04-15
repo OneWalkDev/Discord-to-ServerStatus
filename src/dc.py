@@ -24,10 +24,10 @@ async def on_message(message):
             embed = discord.Embed(title="さばの状態", description="オフライン", color=0xff0000)
             await message.channel.send(embed=embed)
             return
-
         plyrs=""
-        for i in jsonData["players"]["list"]:
-         plyrs=plyrs+i+"\n"
+        if jsonData["players"]["online"] != 0:
+         for i in jsonData["players"]["list"]:
+          plyrs=plyrs+i+"\n"
 
         embed = discord.Embed(title="さばめい", description="オンライン", color=0x00ff00, url="example.com")
         embed.set_author(name="たいとる", url="example.com", icon_url="example.com/sample.png")
