@@ -24,6 +24,7 @@ async def on_message(message):
             embed = discord.Embed(title="さばの状態", description="オフライン", color=0xff0000)
             await message.channel.send(embed=embed)
             return
+        plyrs=""
         try:
             for i in jsonData["players"]["list"]:
                 plyrs=plyrs+i+"\n"
