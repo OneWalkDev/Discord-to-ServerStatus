@@ -25,10 +25,13 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             return
         plyrs=""
-        if jsonData["players"]["online"] != 0:
-         for i in jsonData["players"]["list"]:
-          plyrs=plyrs+i+"\n"
-
+        
+        try:
+            for i in jsonData["players"]["list"]:
+                plyrs=plyrs+i+"\n"
+        except KeyError:
+            plyrs="プレイヤーはいません。\n" 
+            
         embed = discord.Embed(title="さばめい", description="オンライン", color=0x00ff00, url="example.com")
         embed.set_author(name="たいとる", url="example.com", icon_url="example.com/sample.png")
         embed.add_field(name="IP:PORT", value=jsonData['hostname']+":"+str(jsonData['port']))
